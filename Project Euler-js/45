@@ -1,0 +1,18 @@
+var t = 1, td = 1;
+var p = 1, pd = 1;
+var h = 1, hd = 1;
+var f40755 = 0;
+for (;;) {
+  t += td += 1;
+  if (p < t) p += pd += 3;
+  if (h < t) h += hd += 4;
+  if (t == p && t == h) {
+    if (f40755) {
+      ans = t;
+      break;
+    }
+    if (t == 40755) f40755 = 1;
+  }
+}
+
+document.write('ANS: ', ans);
