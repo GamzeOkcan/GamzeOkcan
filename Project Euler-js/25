@@ -1,0 +1,40 @@
+function add(x, y) {
+  var u = [];
+  var v = [];
+  while (x.length != 0) {
+    u.push(Number(x.slice(-10)));
+    x = x.slice(0, -10);
+  }
+  while (y.length != 0) {
+    v.push(Number(y.slice(-10)));
+    y = y.slice(0, -10);
+  }
+  var c = 0;
+  var l = u.length > v.length ? u.length : v.length;
+  for (var i = 0; i < l; i++) {
+    u[i] = (u[i] ? u[i] : 0) + (v[i] ? v[i] : 0) + c;
+    c = Math.floor(u[i] / 10000000000);
+    u[i] = u[i] % 10000000000;
+  }
+  if (c != 0) {
+    u.push(c);
+  }
+  var a = "";
+  for (var i in u) {
+    a = ("0000000000" + u[i]).slice(-10) + a;
+  }
+  while (a.slice(0, 1) == '0') {
+    a = a.slice(1);
+  }
+  return a;
+}
+
+f = '1', g = '1';
+ans = 2;
+do {
+  h = add(f, g);
+  f = g, g = h;
+  ans++;
+} while (g.length < 1000);
+
+document.write('ANS: ', ans);
